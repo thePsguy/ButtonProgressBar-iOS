@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-import ButtonProgressBar-iOS
+import ButtonProgressBar_iOS
 
 class Tests: XCTestCase {
     

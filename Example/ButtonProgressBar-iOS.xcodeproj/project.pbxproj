@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D7D54FD1E9EB1F500FA7BA3 /* ButtonProgressBar_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D7D54FC1E9EB1F500FA7BA3 /* ButtonProgressBar_iOS.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		C18669A62F5892AB5A8B463F /* Pods_ButtonProgressBar_iOS_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117EDF792490C75FC8A1202D /* Pods_ButtonProgressBar_iOS_Example.framework */; };
 		DD6EABDC5BD83ECE916983F6 /* Pods_ButtonProgressBar_iOS_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FCD7F88F888CDC1653FECD /* Pods_ButtonProgressBar_iOS_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,8 +30,9 @@
 /* Begin PBXFileReference section */
 		037631BC6A9226892B5CFE90 /* Pods-ButtonProgressBar-iOS_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonProgressBar-iOS_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ButtonProgressBar-iOS_Example/Pods-ButtonProgressBar-iOS_Example.release.xcconfig"; sourceTree = "<group>"; };
 		117EDF792490C75FC8A1202D /* Pods_ButtonProgressBar_iOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ButtonProgressBar_iOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		279D5C009B4C7F452E6FF6C6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		28A95FA32BA98748D4E90875 /* ButtonProgressBar-iOS.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = "ButtonProgressBar-iOS.podspec"; path = "../ButtonProgressBar-iOS.podspec"; sourceTree = "<group>"; };
+		279D5C009B4C7F452E6FF6C6 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		28A95FA32BA98748D4E90875 /* ButtonProgressBar-iOS.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = "ButtonProgressBar-iOS.podspec"; path = "../ButtonProgressBar-iOS.podspec"; sourceTree = "<group>"; };
+		4D7D54FC1E9EB1F500FA7BA3 /* ButtonProgressBar_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ButtonProgressBar_iOS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/ButtonProgressBar-iOS-grnvrmpqkdqbkwhajfvaezqbhteu/Build/Products/Debug-iphonesimulator/ButtonProgressBar-iOS/ButtonProgressBar_iOS.framework"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ButtonProgressBar-iOS_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ButtonProgressBar-iOS_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +47,7 @@
 		89FCD7F88F888CDC1653FECD /* Pods_ButtonProgressBar_iOS_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ButtonProgressBar_iOS_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1CAFE402C8B22A5A9234201 /* Pods-ButtonProgressBar-iOS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonProgressBar-iOS_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ButtonProgressBar-iOS_Tests/Pods-ButtonProgressBar-iOS_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		BE5984450B18F616883124C8 /* Pods-ButtonProgressBar-iOS_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonProgressBar-iOS_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ButtonProgressBar-iOS_Tests/Pods-ButtonProgressBar-iOS_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		F004CC6D569C0F06BC3971E8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		F004CC6D569C0F06BC3971E8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C18669A62F5892AB5A8B463F /* Pods_ButtonProgressBar_iOS_Example.framework in Frameworks */,
+				4D7D54FD1E9EB1F500FA7BA3 /* ButtonProgressBar_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +154,7 @@
 		FD8C8CC3012C71B993F9743D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D7D54FC1E9EB1F500FA7BA3 /* ButtonProgressBar_iOS.framework */,
 				117EDF792490C75FC8A1202D /* Pods_ButtonProgressBar_iOS_Example.framework */,
 				89FCD7F88F888CDC1653FECD /* Pods_ButtonProgressBar_iOS_Tests.framework */,
 			);
@@ -291,7 +293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		4F452ECD7570C7BCBDC81498 /* [CP] Embed Pods Frameworks */ = {
@@ -336,7 +338,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EB4A715E786F7E826511F6F6 /* [CP] Copy Pods Resources */ = {
