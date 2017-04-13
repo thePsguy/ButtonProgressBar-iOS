@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ButtonProgressBar-iOS'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A simple progress bar UIButton subclass.'
 
 # This description is used to generate tags and improve search results.
@@ -19,6 +19,8 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 Custom UIButton class with loading animation for determinate and indeterminate processes.
+Set progress animated, or unanimated. Uses CABasicAnimation and layer stroke to display progress.
+Text enlarge on tap.
                        DESC
 
   s.homepage         = 'https://github.com/thePsguy/ButtonProgressBar-iOS'
@@ -31,12 +33,4 @@ Custom UIButton class with loading animation for determinate and indeterminate p
   s.ios.deployment_target = '7.0'
 
   s.source_files = 'ButtonProgressBar-iOS/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'ButtonProgressBar-iOS' => ['ButtonProgressBar-iOS/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
