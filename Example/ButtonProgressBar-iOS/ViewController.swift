@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var picker: UIPickerView!
     
     var timePeriod: UITextField!
+    var timePadding: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,13 @@ class ViewController: UIViewController {
         timePeriod.borderStyle = .roundedRect
         timePeriod.attributedPlaceholder = NSAttributedString(string: "Time Period", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 9)])
         
+        timePadding = UITextField(frame: CGRect(x: self.view.frame.width / 2 - 36, y: 145, width: 72, height: 18))
+        timePadding.textAlignment = .center
+        timePadding.keyboardType = .numberPad
+        timePadding.borderStyle = .roundedRect
+        timePadding.attributedPlaceholder = NSAttributedString(string: "Padding Time", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 8)])
+        
+        self.view.addSubview(timePadding)
         self.view.addSubview(timePeriod)
         self.view.addSubview(typeSelector)
         self.view.addSubview(progressButton)
@@ -51,7 +59,8 @@ class ViewController: UIViewController {
     
     func tapped(){
         let time = Double(timePeriod.text != "" ? timePeriod.text! : "1")!
-        picker.selectedRow(inComponent: 0) == 0 ? self.progressButton.startIndeterminate(withTimePeriod: time) : self.loadDeterminate()
+        let padding = Double(timePadding.text != "" ? timePadding.text! : "0.5")!
+        picker.selectedRow(inComponent: 0) == 0 ? self.progressButton.startIndeterminate(withTimePeriod: time, andTimePadding: padding) : self.loadDeterminate()
     }
     
     func loadDeterminate() {
@@ -70,7 +79,7 @@ class ViewController: UIViewController {
             sender.invalidate()
         }
         else {
-            self.progressButton.setProgress(progress: self.progressButton.progress + CGFloat(0.02), false)
+            self.progressButton.setProgress(progress: self.progressButton.progress + CGFloat(0.02), true)
         }
     }
     
@@ -98,7 +107,9 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         typeSelector.text = row == 0 ? "Indeterminate" : "Determinate"
+        self.progressButton.stopIndeterminate()
         timePeriod.isHidden = row != 0
+        timePadding.isHidden = row != 0
         typeSelector.resignFirstResponder()
     }
     

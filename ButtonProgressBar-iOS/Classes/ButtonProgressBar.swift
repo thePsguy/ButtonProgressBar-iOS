@@ -19,8 +19,6 @@ public class ButtonProgressBar: UIButton {
     
     private var progressColor = UIColor(red: 0/255, green: 99/255, blue: 245/255, alpha: 1.0)
     
-    var timePadding: Double = 0.5   //Duration for which loading stays at 1 at end of a time period before beginning next cycle.
-    
     private var timer: Timer?
 
     public let label = UILabel()
@@ -51,20 +49,25 @@ public class ButtonProgressBar: UIButton {
         self.addSubview(label)
     }
     
-    public func startIndeterminate(withTimePeriod time: TimeInterval) {
+    
+    public func startIndeterminate(withTimePeriod time: TimeInterval, andTimePadding padding: TimeInterval) {
         timer?.invalidate()
         self.resetProgress()
         timer = Timer.scheduledTimer(timeInterval: time,
                                      target: self,
                                      selector: #selector(self.animateIndeterminate),
-                                     userInfo: time,
+                                     userInfo: padding,
                                      repeats: true)
         timer?.fire()
         RunLoop.current.add(timer!, forMode: .defaultRunLoopMode)
     }
     
+    public func startIndeterminate(withTimePeriod time: TimeInterval) {
+        startIndeterminate(withTimePeriod: time, andTimePadding: 0.5)
+    }
+    
     func animateIndeterminate(sender: Timer) {
-        let time = sender.userInfo as! Double - timePadding
+        let time = sender.timeInterval - (sender.userInfo as! Double)
         let stroke = CABasicAnimation(keyPath: "strokeEnd")
         stroke.fromValue = 0.0
         stroke.toValue = 0.5
