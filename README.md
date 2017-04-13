@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 [![Platform](https://img.shields.io/cocoapods/p/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 
+![](https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/preview.gif "GIF Preview")
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

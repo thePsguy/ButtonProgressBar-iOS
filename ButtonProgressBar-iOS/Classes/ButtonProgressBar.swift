@@ -17,7 +17,7 @@ public class ButtonProgressBar: UIButton {
     
     private let progressLayer = CAShapeLayer()
     
-    private var progressColor = UIColor(red: 0/255, green: 99/255, blue: 245/255, alpha: 1.0)
+    private var progressColor = UIColor(red: 0/255, green: 140/255, blue: 245/255, alpha: 1.0)
     
     private var timer: Timer?
     
