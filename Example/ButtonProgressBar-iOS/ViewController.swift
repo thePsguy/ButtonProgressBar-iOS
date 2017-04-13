@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        progressButton = ButtonProgressBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.8, height: 45))
+        progressButton = ButtonProgressBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width*0.45, height: 44))
         progressButton.center = self.view.center
         
         progressButton.addTarget(nil, action: #selector(self.tapped), for: .touchUpInside)
@@ -36,12 +36,13 @@ class ViewController: UIViewController {
         typeSelector.textAlignment = .center
         typeSelector.inputView = picker
         typeSelector.text = "Indeterminate"
-        typeSelector.borderStyle = .line
+        typeSelector.borderStyle = .roundedRect
         
-        timePeriod = UITextField(frame: CGRect(x: self.view.frame.width / 2 - 25, y: 120, width: 50, height: 27))
+        timePeriod = UITextField(frame: CGRect(x: self.view.frame.width / 2 - 36, y: 120, width: 72, height: 18))
         timePeriod.textAlignment = .center
         timePeriod.keyboardType = .numberPad
-        timePeriod.borderStyle = .line
+        timePeriod.borderStyle = .roundedRect
+        timePeriod.attributedPlaceholder = NSAttributedString(string: "Time Period", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 9)])
         
         self.view.addSubview(timePeriod)
         self.view.addSubview(typeSelector)
@@ -97,6 +98,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         typeSelector.text = row == 0 ? "Indeterminate" : "Determinate"
+        timePeriod.isHidden = row != 0
         typeSelector.resignFirstResponder()
     }
     

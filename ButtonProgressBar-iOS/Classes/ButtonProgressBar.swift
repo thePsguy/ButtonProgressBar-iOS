@@ -17,10 +17,11 @@ public class ButtonProgressBar: UIButton {
     
     private let progressLayer = CAShapeLayer()
     
-    private var progressColor = UIColor(red: 53/255, green: 127/255, blue: 205/255, alpha: 0.7)
+    private var progressColor = UIColor(red: 2/255, green: 119/255, blue: 189/255, alpha: 1.0)
+    private var timePadding: Double = 0.5
     
     private var timer: Timer?
-    
+
     public let label = UILabel()
     
     override public init(frame: CGRect) {
@@ -28,7 +29,7 @@ public class ButtonProgressBar: UIButton {
         
         layer.cornerRadius = cornerRadius
         layer.masksToBounds = true
-        backgroundColor = UIColor(red: 54/255, green: 99/255, blue: 171/255, alpha: 1.0)
+        backgroundColor = UIColor(red: 45/255, green: 92/255, blue: 196/255, alpha: 1.0)
         
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         
@@ -38,7 +39,6 @@ public class ButtonProgressBar: UIButton {
         progressLayer.path = rectanglePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = progressColor.cgColor
-        
         
         progressLayer.strokeEnd = 0.0
         progressLayer.lineWidth = frame.height*2
@@ -57,16 +57,18 @@ public class ButtonProgressBar: UIButton {
                                      selector: #selector(self.animateIndeterminate),
                                      userInfo: time,
                                      repeats: true)
+        timer?.fire()
         RunLoop.current.add(timer!, forMode: .defaultRunLoopMode)
     }
     
     func animateIndeterminate(sender: Timer) {
-        let time = sender.userInfo as! Double
+        let time = sender.userInfo as! Double - timePadding
         let stroke = CABasicAnimation(keyPath: "strokeEnd")
         stroke.fromValue = 0.0
-        stroke.toValue = 1.0
+        stroke.toValue = 0.5
         stroke.duration = time
-        stroke.isRemovedOnCompletion = true
+        stroke.fillMode = kCAFillModeForwards
+        stroke.isRemovedOnCompletion = false
         stroke.timingFunction = CAMediaTimingFunction(controlPoints: 1, 0, 1, 1)
         self.progressLayer.add(stroke, forKey: nil)
     }
@@ -102,11 +104,16 @@ public class ButtonProgressBar: UIButton {
         self.progressColor = color
         self.progressLayer.strokeColor = color.cgColor
     }
+
+    func setBackgroundColor(color: UIColor) {
+        self.backgroundColor = color
+    }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         UIView.animate(withDuration: 0.05) {
             self.label.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.9)
         }
     }
     
@@ -114,6 +121,7 @@ public class ButtonProgressBar: UIButton {
         super.touchesEnded(touches, with: event)
         UIView.animate(withDuration: 0.1) {
             self.label.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self.backgroundColor = self.backgroundColor?.withAlphaComponent(1.0)
         }
     }
     
