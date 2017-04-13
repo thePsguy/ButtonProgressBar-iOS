@@ -17,8 +17,9 @@ public class ButtonProgressBar: UIButton {
     
     private let progressLayer = CAShapeLayer()
     
-    private var progressColor = UIColor(red: 2/255, green: 119/255, blue: 189/255, alpha: 1.0)
-    private var timePadding: Double = 0.5
+    private var progressColor = UIColor(red: 0/255, green: 99/255, blue: 245/255, alpha: 1.0)
+    
+    var timePadding: Double = 0.5   //Duration for which loading stays at 1 at end of a time period before beginning next cycle.
     
     private var timer: Timer?
 
@@ -29,12 +30,13 @@ public class ButtonProgressBar: UIButton {
         
         layer.cornerRadius = cornerRadius
         layer.masksToBounds = true
-        backgroundColor = UIColor(red: 45/255, green: 92/255, blue: 196/255, alpha: 1.0)
+        backgroundColor = UIColor(red: 50/255, green: 100/255, blue: 200/255, alpha: 1.0)
         
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         
         label.textAlignment = .center
         label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 0)
         
         progressLayer.path = rectanglePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
@@ -82,7 +84,7 @@ public class ButtonProgressBar: UIButton {
     }
     
     public func resetProgress() {
-        self.setProgress(progress: 0.0)
+        self.setProgress(progress: 0.0, false)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -92,12 +94,23 @@ public class ButtonProgressBar: UIButton {
     
     override public func layoutSubviews() {
         label.frame = self.bounds
-        label.font = label.font.withSize(label.frame.height * 0.5)
+        label.font = label.font.withSize(label.frame.height * 0.45)
     }
     
-    public func setProgress(progress: CGFloat) {
+    public func setProgress(progress: CGFloat, _ animated: Bool) {
+        if !animated {
+            progressLayer.strokeEnd = progress / 2
+        }
+        else {
+            let stroke = CABasicAnimation(keyPath: "strokeEnd")
+            stroke.fromValue = self.progress
+            stroke.toValue = progress
+            stroke.fillMode = kCAFillModeForwards
+            stroke.isRemovedOnCompletion = false
+            stroke.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            self.progressLayer.add(stroke, forKey: nil)
+        }
         self.progress = progress
-        progressLayer.strokeEnd = progress / 2
     }
     
     func setProgressColor(color: UIColor) {
@@ -113,7 +126,7 @@ public class ButtonProgressBar: UIButton {
         super.touchesBegan(touches, with: event)
         UIView.animate(withDuration: 0.05) {
             self.label.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.9)
+            self.alpha = 0.85
         }
     }
     
@@ -121,7 +134,7 @@ public class ButtonProgressBar: UIButton {
         super.touchesEnded(touches, with: event)
         UIView.animate(withDuration: 0.1) {
             self.label.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            self.backgroundColor = self.backgroundColor?.withAlphaComponent(1.0)
+            self.alpha = 1.0
         }
     }
     

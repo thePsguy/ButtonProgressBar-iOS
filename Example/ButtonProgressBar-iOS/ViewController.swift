@@ -70,7 +70,7 @@ class ViewController: UIViewController {
             sender.invalidate()
         }
         else {
-            self.progressButton.setProgress(progress: self.progressButton.progress + CGFloat(0.02))
+            self.progressButton.setProgress(progress: self.progressButton.progress + CGFloat(0.02), false)
         }
     }
     
