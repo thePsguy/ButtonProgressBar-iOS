@@ -20,8 +20,6 @@ public class ButtonProgressBar: UIButton {
     private var progressColor = UIColor(red: 0/255, green: 99/255, blue: 245/255, alpha: 1.0)
     
     private var timer: Timer?
-
-    public let label = UILabel()
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,9 +30,9 @@ public class ButtonProgressBar: UIButton {
         
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         
-        label.textAlignment = .center
-        label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 0)
+        titleLabel!.textAlignment = .center
+        titleLabel!.textColor = .white
+        titleLabel!.font = UIFont.boldSystemFont(ofSize: 0)
         
         progressLayer.path = rectanglePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
@@ -46,11 +44,11 @@ public class ButtonProgressBar: UIButton {
         progressLayer.strokeEnd = 0.0
         
         layer.addSublayer(progressLayer)
-        self.addSubview(label)
+        self.bringSubview(toFront: titleLabel!)
     }
     
     
-    public func startIndeterminate(withTimePeriod time: TimeInterval, andTimePadding padding: TimeInterval) {
+    public func startIndeterminate(withTimePeriod time: TimeInterval, andTimePadding padding: TimeInterval = 0.5) {
         timer?.invalidate()
         self.resetProgress()
         timer = Timer.scheduledTimer(timeInterval: time,
@@ -62,9 +60,9 @@ public class ButtonProgressBar: UIButton {
         RunLoop.current.add(timer!, forMode: .defaultRunLoopMode)
     }
     
-    public func startIndeterminate(withTimePeriod time: TimeInterval) {
-        startIndeterminate(withTimePeriod: time, andTimePadding: 0.5)
-    }
+//    public func startIndeterminate(withTimePeriod time: TimeInterval) {
+//        startIndeterminate(withTimePeriod: time, andTimePadding: 0.5)
+//    }
     
     func animateIndeterminate(sender: Timer) {
         let time = sender.timeInterval - (sender.userInfo as! Double)
@@ -96,8 +94,9 @@ public class ButtonProgressBar: UIButton {
     
     
     override public func layoutSubviews() {
-        label.frame = self.bounds
-        label.font = label.font.withSize(label.frame.height * 0.45)
+        super.layoutSubviews()
+        titleLabel!.frame = self.bounds
+        titleLabel!.font = titleLabel!.font.withSize(titleLabel!.frame.height * 0.45)
     }
     
     public func setProgress(progress: CGFloat, _ animated: Bool) {
@@ -128,7 +127,7 @@ public class ButtonProgressBar: UIButton {
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         UIView.animate(withDuration: 0.05) {
-            self.label.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+            self.titleLabel!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
             self.alpha = 0.85
         }
     }
@@ -136,7 +135,7 @@ public class ButtonProgressBar: UIButton {
     override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         UIView.animate(withDuration: 0.1) {
-            self.label.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            self.titleLabel!.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             self.alpha = 1.0
         }
     }

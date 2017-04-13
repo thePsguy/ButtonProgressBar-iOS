@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         progressButton.center = self.view.center
         
         progressButton.addTarget(nil, action: #selector(self.tapped), for: .touchUpInside)
-        progressButton.label.text = "DOWNLOAD"
+        progressButton.setTitle("Download", for: .normal)
         
         picker = UIPickerView()
         picker.delegate = self

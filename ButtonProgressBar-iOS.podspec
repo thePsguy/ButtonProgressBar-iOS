@@ -28,7 +28,7 @@ Custom UIButton class with loading animation for determinate and indeterminate p
   s.source           = { :git => 'https://github.com/thePsguy/ButtonProgressBar-iOS.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/thePsguy'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '7.0'
 
   s.source_files = 'ButtonProgressBar-iOS/Classes/**/*'
   
