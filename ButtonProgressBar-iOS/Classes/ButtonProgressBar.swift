@@ -21,6 +21,9 @@ public class ButtonProgressBar: UIButton {
     
     private var timer: Timer?
     
+    /**
+     Initialize programmaticaly just like you would any other UIButton.
+    */
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -28,12 +31,16 @@ public class ButtonProgressBar: UIButton {
         layer.masksToBounds = true
         backgroundColor = UIColor(red: 50/255, green: 100/255, blue: 200/255, alpha: 1.0)
         
-        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
-        
         titleLabel!.textAlignment = .center
         titleLabel!.textColor = .white
         titleLabel!.font = UIFont.boldSystemFont(ofSize: 0)
         
+        imageView?.contentMode = .center
+        imageView?.tintColor = .white
+        self.hideImage(true)
+
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+
         progressLayer.path = rectanglePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = progressColor.cgColor
@@ -41,14 +48,17 @@ public class ButtonProgressBar: UIButton {
         progressLayer.strokeEnd = 0.0
         progressLayer.lineWidth = frame.height*2
         
-        progressLayer.strokeEnd = 0.0
-        
         layer.addSublayer(progressLayer)
         self.bringSubview(toFront: titleLabel!)
+        self.bringSubview(toFront: imageView!)
     }
     
-    
-    public func startIndeterminate(withTimePeriod time: TimeInterval, andTimePadding padding: TimeInterval = 0.5) {
+    /**
+     Used to handle indeterminate loading.
+     - Parameter timePeriod (optional): The total time (animation + padding, default 2.0) that 1 cycle of the loading takes.
+     - Parameter timePadding (optional): The duration (default 0.5), in seconds, before starting the next cycle.
+    */
+    public func startIndeterminate(withTimePeriod time: TimeInterval = 2.0, andTimePadding padding: TimeInterval = 0.5) {
         timer?.invalidate()
         self.resetProgress()
         timer = Timer.scheduledTimer(timeInterval: time,
@@ -59,10 +69,6 @@ public class ButtonProgressBar: UIButton {
         timer?.fire()
         RunLoop.current.add(timer!, forMode: .defaultRunLoopMode)
     }
-    
-//    public func startIndeterminate(withTimePeriod time: TimeInterval) {
-//        startIndeterminate(withTimePeriod: time, andTimePadding: 0.5)
-//    }
     
     func animateIndeterminate(sender: Timer) {
         let time = sender.timeInterval - (sender.userInfo as! Double)
@@ -76,15 +82,20 @@ public class ButtonProgressBar: UIButton {
         self.progressLayer.add(stroke, forKey: nil)
     }
     
-    public func startIndeterminate(){
-        startIndeterminate(withTimePeriod: 2.0)
-    }
-    
+    /**
+     Stop indeterminate loading.
+    */
     public func stopIndeterminate() {
         timer?.invalidate()
     }
     
+    /**
+     Reset progress to 0.0 unanimated.
+     See `setProgress(progress:,animated:)` to set progress animated.
+    */
     public func resetProgress() {
+        self.hideImage(true)
+        self.hideTitle(false)
         self.setProgress(progress: 0.0, false)
     }
     
@@ -92,13 +103,18 @@ public class ButtonProgressBar: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override public func layoutSubviews() {
         super.layoutSubviews()
         titleLabel!.frame = self.bounds
         titleLabel!.font = titleLabel!.font.withSize(titleLabel!.frame.height * 0.45)
+        imageView?.frame = self.bounds
     }
     
+    /**
+     Set the absolute progress value.
+     - Parameter progreaa: Ranges from 0.0 to 1.0
+     - Parameter animated: If true, linearly animates to target progress value.
+    */
     public func setProgress(progress: CGFloat, _ animated: Bool) {
         if !animated {
             progressLayer.strokeEnd = progress / 2
@@ -115,12 +131,76 @@ public class ButtonProgressBar: UIButton {
         self.progress = progress
     }
     
-    func setProgressColor(color: UIColor) {
+    /**
+        Set title label text.
+    */
+    public override func setTitle(_ title: String?, for state: UIControlState) {
+        super.setTitle(title, for: state)
+    }
+    
+    /**
+     Show / Hide title text.
+     - Parameter _ hidden: Title hiddden if true, shown if false. 
+     */
+    public func hideTitle(_ hidden: Bool) {
+        titleLabel!.layer.opacity = hidden ? 0.0 : 1.0
+    }
+    
+    /**
+     Show / Hide image.
+     - Parameter hidden: Title hiddden if true, shown if false.
+     */
+    public func hideImage(_ hidden: Bool) {
+        if hidden {
+            self.imageView?.layer.removeAllAnimations()
+            imageView?.layer.transform = CATransform3DMakeScale(0.0, 0.0, 0.0)
+        } else {
+            var completionAnim = CABasicAnimation()
+            completionAnim.keyPath = "transform"
+            completionAnim.fromValue = CATransform3DMakeScale(0.0, 0.0, 0.0)
+            completionAnim.toValue = CATransform3DIdentity
+            completionAnim.fillMode = kCAFillModeForwards
+            completionAnim.isRemovedOnCompletion = false
+            completionAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            self.imageView?.layer.add(completionAnim, forKey: nil)
+        }
+    }
+    
+    /**
+     Stop indeterminate loading if active, set progress to 1.0 animated, and display completion checkmark.
+     Needs to be called explicitly when loading determinate as well.
+    */
+    public func triggerCompletion() {
+        self.stopIndeterminate()
+        self.setProgress(progress: 1.0, true)
+        self.hideTitle(true)
+        self.hideImage(false)
+    }
+    
+    
+    /**
+     Sets the image shown on loading completion.
+     - Parameter image: UIImage to be shown on completion.
+     
+     NOTE: This image must be set. No default exists.
+    */
+    
+    public func setCompletionImage(image: UIImage) {
+        self.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+    }
+    
+    /**
+     Set progress layer color.
+    */
+    public func setProgressColor(color: UIColor) {
         self.progressColor = color
         self.progressLayer.strokeColor = color.cgColor
     }
 
-    func setBackgroundColor(color: UIColor) {
+    /**
+     Set button background color.
+     */
+    public func setBackgroundColor(color: UIColor) {
         self.backgroundColor = color
     }
     

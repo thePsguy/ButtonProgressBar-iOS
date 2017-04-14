@@ -12,6 +12,7 @@ import ButtonProgressBar_iOS
 class ViewController: UIViewController {
     
     var progressButton: ButtonProgressBar!
+    var completionButton: UIButton!
     var typeSelector: UITextField!
     
     var picker: UIPickerView!
@@ -27,6 +28,13 @@ class ViewController: UIViewController {
         
         progressButton.addTarget(nil, action: #selector(self.tapped), for: .touchUpInside)
         progressButton.setTitle("Download", for: .normal)
+        progressButton.setCompletionImage(image: UIImage(named: "checkmark")!)
+        
+        completionButton = UIButton(frame: CGRect(x: 0, y: 180, width: self.view.frame.width, height: 44))
+        
+        completionButton.addTarget(nil, action: #selector(self.progressComplete), for: .touchUpInside)
+        completionButton.setTitle("Trigger Completion", for: .normal)
+        completionButton.setTitleColor(.blue, for: .normal)
         
         picker = UIPickerView()
         picker.delegate = self
@@ -51,10 +59,15 @@ class ViewController: UIViewController {
         timePadding.borderStyle = .roundedRect
         timePadding.attributedPlaceholder = NSAttributedString(string: "Padding Time", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 8)])
         
+        self.view.addSubview(completionButton)
         self.view.addSubview(timePadding)
         self.view.addSubview(timePeriod)
         self.view.addSubview(typeSelector)
         self.view.addSubview(progressButton)
+    }
+    
+    func progressComplete(sender: AnyObject?) {
+        progressButton.triggerCompletion()
     }
     
     func tapped(){

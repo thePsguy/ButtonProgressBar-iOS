@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ButtonProgressBar-iOS'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A simple progress bar UIButton subclass.'
 
 # This description is used to generate tags and improve search results.
@@ -18,9 +18,9 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Custom UIButton class with loading animation for determinate and indeterminate processes.
+Custom UIButton class with loading animation for determinate and indeterminate processes like network download / upload.
 Set progress animated, or unanimated. Uses CABasicAnimation and layer stroke to display progress.
-Text enlarge on tap.
+Text enlarge on tap. Animated completion image.
                        DESC
 
   s.homepage         = 'https://github.com/thePsguy/ButtonProgressBar-iOS'
@@ -30,7 +30,7 @@ Text enlarge on tap.
   s.source           = { :git => 'https://github.com/thePsguy/ButtonProgressBar-iOS.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/thePsguy'
 
-  s.ios.deployment_target = '7.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = 'ButtonProgressBar-iOS/Classes/**/*'
 end
