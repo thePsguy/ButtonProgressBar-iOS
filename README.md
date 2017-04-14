@@ -101,6 +101,12 @@ hideImage(_ hidden: Bool)
 ## Author
 
 Pushkar Sharma, thePsguy@icloud.com
+<hr>
+
+Inspiration from [Dribbble](https://dribbble.com/shots/2551579-Download-Button)
+
+[Android version](https://github.com/ishaan1995/ButtonProgressBar) available!
+
 
 ## License
 
