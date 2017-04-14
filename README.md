@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 [![Platform](https://img.shields.io/cocoapods/p/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 
-![](https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/preview.gif "GIF Preview")
+<img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/preview.gif" alt="GIF Preview" width="270"/>
 
 ## Example
 
@@ -27,19 +27,30 @@ pod "ButtonProgressBar-iOS"
 ```Swift
 import ButtonProgressBar_iOS
 ```
-Initialize just like you would any other UIButton:
+<hr>
+
+#### Initialize just like you would any other UIButton:
 ```swift
 var progressButton = ButtonProgressBar(frame: CGRect)
 view.addSubview(progressButton)
 ```
+<hr>
 
-Since this is a UIButton subclass, targets and labels can be set in the same way:
+#### Since this is a UIButton subclass, targets and labels can be set in the same way:
 ```swift
 progressButton.addTarget(nil, action: #selector(self.tapped), for: .touchUpInside)
 progressButton.setTitle("Download", for: .normal)
 ```
+<hr>
 
-Indeterminate loading can be handled with the following functions:
+#### The completion image can be set with;
+_This image must be set since no default exists._
+```swift    
+  setCompletionImage(image: UIImage)
+```
+<hr>
+
+#### Indeterminate loading can be handled with the following functions:
 ```swift
 startIndeterminate(withTimePeriod time: TimeInterval)
 startIndeterminate(withTimePeriod time: TimeInterval, andTimePadding padding: TimeInterval)
@@ -51,8 +62,9 @@ Time Period is the total time (animation + padding) that 1 cycle of the loading 
 
 stopIndeterminate()  //Stops the indeterminate loading.
 ```
+<hr>
 
-For determinate usage or otherwise, progress can be set with:
+#### For determinate usage or otherwise, progress can be set with:
 ```swift
 setProgress(progress: CGFloat, _ animated: Bool) 
 /*
@@ -63,12 +75,28 @@ If animated is true, linearly animates to progress.
 
 resetProgress()  //Set progress to 0.0 unanimated.
 ```
+<hr>
 
-Set the progress and background colors:
+#### Set the progress and background colors:
 ```swift
 setBackgroundColor(color: UIColor)
 setProgressColor(color: UIColor)
 ```
+<hr>
+
+#### To explicitly show/hide the title / image:
+```swift
+hideTitle(_ hidden: Bool)
+hideImage(_ hidden: Bool)
+```
+<hr>
+
+#### Stop indeterminate loading if active, set progress to 1.0 animated, and display completion image if set.
+     Needs to be called explicitly when loading determinate as well.
+```swift
+  triggerCompletion()
+```
+<hr>
 
 ## Author
 
