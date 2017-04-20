@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ButtonProgressBar-iOS'
-  s.version          = '0.1.2'
+  s.version          = '1.0.0'
   s.summary          = 'A simple progress bar UIButton subclass.'
 
 # This description is used to generate tags and improve search results.
@@ -24,13 +24,13 @@ Text enlarge on tap. Animated completion image.
                        DESC
 
   s.homepage         = 'https://github.com/thePsguy/ButtonProgressBar-iOS'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots     = 'https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/output_F2Ryon.gif', 'https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/preview.gif'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Pushkar Sharma' => 'thePsguy@icloud.com' }
   s.source           = { :git => 'https://github.com/thePsguy/ButtonProgressBar-iOS.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/thePsguy'
+   s.social_media_url = 'https://twitter.com/thePsguy'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'ButtonProgressBar-iOS/Classes/**/*'
+  s.source_files = 'Source/*.swift'
 end

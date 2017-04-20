@@ -155,7 +155,7 @@ public class ButtonProgressBar: UIButton {
             self.imageView?.layer.removeAllAnimations()
             imageView?.layer.transform = CATransform3DMakeScale(0.0, 0.0, 0.0)
         } else {
-            var completionAnim = CABasicAnimation()
+            let completionAnim = CABasicAnimation()
             completionAnim.keyPath = "transform"
             completionAnim.fromValue = CATransform3DMakeScale(0.0, 0.0, 0.0)
             completionAnim.toValue = CATransform3DIdentity
