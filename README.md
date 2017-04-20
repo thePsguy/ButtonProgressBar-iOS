@@ -5,6 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 [![Platform](https://img.shields.io/cocoapods/p/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 
+<img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/output_F2Ryon.gif" alt="GIF Preview"/>
 <img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/preview.gif" alt="GIF Preview" width="270"/>
 
 ## Example
