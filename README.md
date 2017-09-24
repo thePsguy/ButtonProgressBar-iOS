@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 [![License](https://img.shields.io/cocoapods/l/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 [![Platform](https://img.shields.io/cocoapods/p/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
+[![Contact](https://img.shields.io/badge/contact-%40thePsguy-3a8fc1.svg)](https://twitter.com/thePsguy)
 
 <img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/output_F2Ryon.gif" alt="GIF Preview"/>
 
