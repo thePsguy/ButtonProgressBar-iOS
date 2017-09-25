@@ -13,6 +13,7 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 <img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/preview.gif" alt="GIF Preview" width="270"/>
+<img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/SimulatorScreenShot.png" alt="Simulator Screen" width="270"/>
 
 ## Requirements
 iOS > 7.0
