@@ -10,9 +10,11 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+* To test it in your browser itself, [click here](https://appetize.io/app/rcb15cyg78agt90pqa3xujx3cc).
 
-<img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/SimulatorScreenShot.png" alt="Simulator Screen" width="300"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/preview.gif" alt="GIF Preview" width="270"/> 
+* To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+<img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/SimulatorScreenShot.png" alt="Simulator Screen" width="200"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://raw.githubusercontent.com/thePsguy/ButtonProgressBar-iOS/master/preview.gif" alt="GIF Preview" width="350"/> 
 
 ## Requirements
 iOS > 7.0
