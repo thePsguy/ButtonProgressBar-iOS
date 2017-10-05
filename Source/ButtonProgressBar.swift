@@ -21,6 +21,7 @@ THE SOFTWARE.
 */
 
 import UIKit
+import AudioToolbox
 
 public class ButtonProgressBar: UIButton {
     
