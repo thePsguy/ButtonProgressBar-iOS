@@ -220,6 +220,9 @@ public class ButtonProgressBar: UIButton {
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+                AudioServicesPlaySystemSound(1519)
         UIView.animate(withDuration: 0.05) {
             self.titleLabel!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
             self.alpha = 0.85
