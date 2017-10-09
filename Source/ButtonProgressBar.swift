@@ -21,10 +21,12 @@ THE SOFTWARE.
 */
 
 import UIKit
+import AudioToolbox
 
 public class ButtonProgressBar: UIButton {
     
     private var cornerRadius: CGFloat = 5
+    private var hapticEnabled: Bool = false
     public private(set) var progress: CGFloat = 0.0
     
     var indeterminate: Bool = false
@@ -220,6 +222,15 @@ public class ButtonProgressBar: UIButton {
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
+        if #available(iOS 10.0, *) {
+            if hapticEnabled != false {
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+                AudioServicesPlaySystemSound(1519)
+            } else {
+                return
+            }
+        }
         UIView.animate(withDuration: 0.05) {
             self.titleLabel!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
             self.alpha = 0.85
