@@ -51,13 +51,13 @@ class ViewController: UIViewController {
         timePeriod.textAlignment = .center
         timePeriod.keyboardType = .numberPad
         timePeriod.borderStyle = .roundedRect
-        timePeriod.attributedPlaceholder = NSAttributedString(string: "Time Period", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 9)])
+        timePeriod.attributedPlaceholder = NSAttributedString(string: "Time Period", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 9)])
         
         timePadding = UITextField(frame: CGRect(x: self.view.frame.width / 2 - 36, y: 145, width: 72, height: 18))
         timePadding.textAlignment = .center
         timePadding.keyboardType = .numberPad
         timePadding.borderStyle = .roundedRect
-        timePadding.attributedPlaceholder = NSAttributedString(string: "Padding Time", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 8)])
+        timePadding.attributedPlaceholder = NSAttributedString(string: "Padding Time", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 8)])
         
         self.view.addSubview(completionButton)
         self.view.addSubview(timePadding)
@@ -66,11 +66,11 @@ class ViewController: UIViewController {
         self.view.addSubview(progressButton)
     }
     
-    func progressComplete(sender: AnyObject?) {
+    @objc func progressComplete(sender: AnyObject?) {
         progressButton.triggerCompletion()
     }
     
-    func tapped(){
+    @objc func tapped(){
         let time = Double(timePeriod.text != "" ? timePeriod.text! : "1")!
         let padding = Double(timePadding.text != "" ? timePadding.text! : "0.5")!
         picker.selectedRow(inComponent: 0) == 0 ? self.progressButton.startIndeterminate(withTimePeriod: time, andTimePadding: padding) : self.loadDeterminate()
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         RunLoop.current.add(timer, forMode: .defaultRunLoopMode)
     }
     
-    func animateDeterminate(sender: Timer) {
+    @objc func animateDeterminate(sender: Timer) {
         if self.progressButton.progress >= 1.0 {
             sender.invalidate()
         }

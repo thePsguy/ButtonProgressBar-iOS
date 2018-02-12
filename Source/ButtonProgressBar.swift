@@ -84,7 +84,7 @@ public class ButtonProgressBar: UIButton {
         RunLoop.current.add(timer!, forMode: .defaultRunLoopMode)
     }
     
-    func animateIndeterminate(sender: Timer) {
+    @objc func animateIndeterminate(sender: Timer) {
         let time = sender.timeInterval - (sender.userInfo as! Double)
         let stroke = CABasicAnimation(keyPath: "strokeEnd")
         stroke.fromValue = 0.0
