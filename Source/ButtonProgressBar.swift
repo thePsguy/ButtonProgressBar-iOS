@@ -67,6 +67,35 @@ public class ButtonProgressBar: UIButton {
         self.bringSubview(toFront: imageView!)
     }
     
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        layer.cornerRadius = cornerRadius
+        layer.masksToBounds = true
+        backgroundColor = UIColor(red: 50/255, green: 100/255, blue: 200/255, alpha: 1.0)
+        
+        titleLabel!.textAlignment = .center
+        titleLabel!.textColor = .white
+        titleLabel!.font = UIFont.boldSystemFont(ofSize: 0)
+        
+        imageView?.contentMode = .center
+        imageView?.tintColor = .white
+        self.hideImage(true)
+        
+        let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
+        
+        progressLayer.path = rectanglePath.cgPath
+        progressLayer.fillColor = UIColor.clear.cgColor
+        progressLayer.strokeColor = progressColor.cgColor
+        
+        progressLayer.strokeEnd = 0.0
+        progressLayer.lineWidth = frame.height*2
+        
+        layer.addSublayer(progressLayer)
+        self.bringSubview(toFront: titleLabel!)
+        self.bringSubview(toFront: imageView!)
+    }
+    
     /**
      Used to handle indeterminate loading.
      - Parameter timePeriod (optional): The total time (animation + padding, default 2.0) that 1 cycle of the loading takes.
@@ -111,10 +140,6 @@ public class ButtonProgressBar: UIButton {
         self.hideImage(true)
         self.hideTitle(false)
         self.setProgress(progress: 0.0, false)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override public func layoutSubviews() {
