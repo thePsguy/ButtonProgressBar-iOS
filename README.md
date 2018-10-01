@@ -1,6 +1,5 @@
 # ButtonProgressBar-iOS
 
-[![CI Status](http://img.shields.io/travis/thePsguy/ButtonProgressBar-iOS.svg?style=flat)](https://travis-ci.org/thePsguy/ButtonProgressBar-iOS)
 [![Version](https://img.shields.io/cocoapods/v/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 [![License](https://img.shields.io/cocoapods/l/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
 [![Platform](https://img.shields.io/cocoapods/p/ButtonProgressBar-iOS.svg?style=flat)](http://cocoapods.org/pods/ButtonProgressBar-iOS)
@@ -10,7 +9,7 @@
 
 ## Example
 
-* To test it in your browser itself, [click here](https://appetize.io/app/rcb15cyg78agt90pqa3xujx3cc).
+* For LIVE PREVIEW on Appetize in your browser itself, [click here](https://appetize.io/app/rcb15cyg78agt90pqa3xujx3cc).
 
 * To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
