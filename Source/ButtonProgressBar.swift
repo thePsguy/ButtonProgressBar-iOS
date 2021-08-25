@@ -63,8 +63,8 @@ public class ButtonProgressBar: UIButton {
         progressLayer.lineWidth = frame.height*2
         
         layer.addSublayer(progressLayer)
-        self.bringSubview(toFront: titleLabel!)
-        self.bringSubview(toFront: imageView!)
+        self.bringSubviewToFront(titleLabel!)
+        self.bringSubviewToFront(imageView!)
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -92,8 +92,8 @@ public class ButtonProgressBar: UIButton {
         progressLayer.lineWidth = frame.height*2
         
         layer.addSublayer(progressLayer)
-        self.bringSubview(toFront: titleLabel!)
-        self.bringSubview(toFront: imageView!)
+        self.bringSubviewToFront(titleLabel!)
+        self.bringSubviewToFront(imageView!)
     }
     
     /**
@@ -110,7 +110,7 @@ public class ButtonProgressBar: UIButton {
                                      userInfo: padding,
                                      repeats: true)
         timer?.fire()
-        RunLoop.current.add(timer!, forMode: .defaultRunLoopMode)
+        RunLoop.current.add(timer!, forMode: RunLoop.Mode.default)
     }
     
     @objc func animateIndeterminate(sender: Timer) {
@@ -119,7 +119,7 @@ public class ButtonProgressBar: UIButton {
         stroke.fromValue = 0.0
         stroke.toValue = 0.5
         stroke.duration = time
-        stroke.fillMode = kCAFillModeForwards
+        stroke.fillMode = CAMediaTimingFillMode.forwards
         stroke.isRemovedOnCompletion = false
         stroke.timingFunction = CAMediaTimingFunction(controlPoints: 1, 0, 1, 1)
         self.progressLayer.add(stroke, forKey: nil)
@@ -162,9 +162,9 @@ public class ButtonProgressBar: UIButton {
             let stroke = CABasicAnimation(keyPath: "strokeEnd")
             stroke.fromValue = self.progress
             stroke.toValue = progress
-            stroke.fillMode = kCAFillModeForwards
+            stroke.fillMode = CAMediaTimingFillMode.forwards
             stroke.isRemovedOnCompletion = false
-            stroke.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            stroke.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
             self.progressLayer.add(stroke, forKey: nil)
         }
         self.progress = progress
@@ -173,7 +173,7 @@ public class ButtonProgressBar: UIButton {
     /**
         Set title label text.
     */
-    public override func setTitle(_ title: String?, for state: UIControlState) {
+    public override func setTitle(_ title: String?, for state: UIControl.State) {
         super.setTitle(title, for: state)
     }
     
@@ -198,9 +198,9 @@ public class ButtonProgressBar: UIButton {
             completionAnim.keyPath = "transform"
             completionAnim.fromValue = CATransform3DMakeScale(0.0, 0.0, 0.0)
             completionAnim.toValue = CATransform3DIdentity
-            completionAnim.fillMode = kCAFillModeForwards
+            completionAnim.fillMode = CAMediaTimingFillMode.forwards
             completionAnim.isRemovedOnCompletion = false
-            completionAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            completionAnim.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
             self.imageView?.layer.add(completionAnim, forKey: nil)
         }
     }

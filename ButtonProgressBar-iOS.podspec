@@ -28,9 +28,9 @@ Text enlarge on tap. Animated completion image.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Pushkar Sharma' => 'thePsguy@icloud.com' }
   s.source           = { :git => 'https://github.com/thePsguy/ButtonProgressBar-iOS.git', :tag => s.version.to_s }
-   s.social_media_url = 'https://twitter.com/thePsguy'
+  s.social_media_url = 'https://twitter.com/thePsguy'
 
-  s.ios.deployment_target = '8.0'
-
+  s.ios.deployment_target = '9.0'
+  s.swift_versions = ['5.2', '5.4']
   s.source_files = 'Source/*.swift'
 end
