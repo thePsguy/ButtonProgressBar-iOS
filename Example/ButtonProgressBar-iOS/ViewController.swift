@@ -51,13 +51,13 @@ class ViewController: UIViewController {
         timePeriod.textAlignment = .center
         timePeriod.keyboardType = .numberPad
         timePeriod.borderStyle = .roundedRect
-        timePeriod.attributedPlaceholder = NSAttributedString(string: "Time Period", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 9)])
+        timePeriod.attributedPlaceholder = NSAttributedString(string: "Time Period", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 9)])
         
         timePadding = UITextField(frame: CGRect(x: self.view.frame.width / 2 - 36, y: 145, width: 72, height: 18))
         timePadding.textAlignment = .center
         timePadding.keyboardType = .numberPad
         timePadding.borderStyle = .roundedRect
-        timePadding.attributedPlaceholder = NSAttributedString(string: "Padding Time", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 8)])
+        timePadding.attributedPlaceholder = NSAttributedString(string: "Padding Time", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)])
         
         self.view.addSubview(completionButton)
         self.view.addSubview(timePadding)
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
                                          selector: #selector(self.animateDeterminate),
                                          userInfo: time,
                                          repeats: true)
-        RunLoop.current.add(timer, forMode: .defaultRunLoopMode)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.default)
     }
     
     @objc func animateDeterminate(sender: Timer) {

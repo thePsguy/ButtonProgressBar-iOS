@@ -1,0 +1,6 @@
+framework module ButtonProgressBar_iOS {
+  umbrella header "ButtonProgressBar-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
